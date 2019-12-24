@@ -34,7 +34,7 @@ pipeline{
 			steps{ sh 'mvn test' 
 				 } 
 		} 
-		stage('MetriCheck')
+		stage('MetricCheck')
 		{ 
 		agent any 
 			steps
