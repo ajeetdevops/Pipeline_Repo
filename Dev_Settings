@@ -8,9 +8,11 @@ pipeline{
 		{
 		stage('Compile')
 		{ 
-		agent any 
-			steps{ sh'mvn compile' 
-				 } 
+			agent any 
+			steps
+			{ 
+			sh 'mvn compile' 
+			} 
 		} 
 		stage('CodeReview')
 		{ 
@@ -23,13 +25,13 @@ pipeline{
 			{ 
 				always
 				{ 
-					pmd pattern:'target/pmd.xml' 
+					pmd pattern: 'target/pmd.xml' 
 				} 
 			} 
 		} 
 		stage('UnitTest')
 		{ 
-			steps{ sh'mvn test' 
+			steps{ sh 'mvn test' 
 				 } 
 		} 
 		stage('MetriCheck')
@@ -37,13 +39,13 @@ pipeline{
 		agent any 
 			steps
 			{ 
-				sh'mvn cobertura:cobertura -Dcobertura.report.format=xml' 
+				sh 'mvn cobertura:cobertura -Dcobertura.report.format=xml' 
 			} 
 				post
 				{ 
 					always
 					{ 
-						cobertura coberturaReportFile:'target/site/cobertura/coveage.xml'
+						cobertura coberturaReportFile: 'target/site/cobertura/coveage.xml'
 					}
 				}
 		}
@@ -52,7 +54,7 @@ pipeline{
 			agent any 
 			steps
 			{
-				sh'mvn package'
+				sh 'mvn package'
 			}
 		}
 		}
