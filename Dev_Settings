@@ -45,7 +45,7 @@ pipeline{
 				{ 
 					always
 					{ 
-						cobertura coberturaReportFile: 'target/site/cobertura/coveage.xml'
+						cobertura coberturaReportFile: 'target/site/cobertura/coverage.xml'
 					}
 				}
 		}
